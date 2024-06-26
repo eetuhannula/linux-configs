@@ -1,5 +1,5 @@
 
-{ config, pkgs, lib, ... }: # IN NON VM ENVIROMENT 'lib' IS NOT NEEDED. REMOVE VIRTUAL BOX ADDITIONS AT THE BOTTOM 
+{ config, pkgs, ... }: 
 
 {
   imports =
@@ -44,6 +44,9 @@
     windowManager.i3.enable = true;     #i3wm
   };
 
+  virtualisation.virtualbox.guest.enable = true;
+  virtualisation.virtualbox.guest.draganddrop = true;
+  virtualisation.virtualbox.guest.clipboard = true;
   # Configure console keymap
   console.keyMap = "fi";
 
@@ -129,31 +132,6 @@
     b = "cbonsai";
   };
 
-  # VIRTUALBOX SHENANIGANS START
-  services.xserver.videoDrivers = lib.mkForce [ "vmware" "virtualbox" "modesetting" ];
-  systemd.user.services = let
-    vbox-client = desc: flags: {
-      description = "VirtualBox Guest: ${desc}";
-
-      wantedBy = [ "graphical-session.target" ];
-      requires = [ "dev-vboxguest.device" ];
-      after = [ "dev-vboxguest.device" ];
-
-      unitConfig.ConditionVirtualization = "oracle";
-
-      serviceConfig.ExecStart = "${config.boot.kernelPackages.virtualboxGuestAdditions}/bin/VBoxClient -fv ${flags}";
-      };
-  in {
-    virtualbox-resize = vbox-client "Resize" "--vmsvga";
-    virtualbox-clipboard = vbox-client "Clipboard" "--clipboard";
-  };
-
-  virtualisation.virtualbox.guest = {
-    enable = true;
-    x11 = true;
-  };
-  # VIRTUALBOX SHENANIGANS END
-
-  system.stateVersion = "23.05"; 
+  system.stateVersion = "24.05"; 
 
 }
