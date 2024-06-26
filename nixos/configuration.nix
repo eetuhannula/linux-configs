@@ -128,7 +128,7 @@
     nixrb = "sudo nixos-rebuild switch";
     nixrbh = "sudo nixos-rebuild switch -I nixos-config=/home/eetu/linux-configs/nixos/configuration.nix";
     nixconf = "sudo vim /etc/nixos/configuration.nix";
-    nixcpconf = "sudo cp /home/eetu/linux-configs/nixos/configuration.nix /etc/nixos/
+    nixcpconf = "sudo cp /home/eetu/linux-configs/nixos/configuration.nix /etc/nixos/";
     
     m = "cmatrix";
     b = "cbonsai";
