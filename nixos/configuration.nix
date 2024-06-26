@@ -47,6 +47,7 @@
   virtualisation.virtualbox.guest.enable = true;
   virtualisation.virtualbox.guest.draganddrop = true;
   virtualisation.virtualbox.guest.clipboard = true;
+
   # Configure console keymap
   console.keyMap = "fi";
 
@@ -125,8 +126,9 @@
     ls = "ls --color=tty";
 
     nixrb = "sudo nixos-rebuild switch";
-    nixrbh = "sudo nixos-rebuild switch -I nixos-config=/home/eetu/linux/nixos/configuration.nix";
+    nixrbh = "sudo nixos-rebuild switch -I nixos-config=/home/eetu/linux-configs/nixos/configuration.nix";
     nixconf = "sudo vim /etc/nixos/configuration.nix";
+    nixcpconf = "sudo cp /home/eetu/linux-configs/nixos/configuration.nix /etc/nixos/
     
     m = "cmatrix";
     b = "cbonsai";
