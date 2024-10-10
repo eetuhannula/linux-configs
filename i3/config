@@ -193,10 +193,7 @@ client.background       #ffffff
 gaps inner 10px
 
 # HOTKEYS
-bindsym $mod+Return exec alacritty      # Terminal
+bindsym $mod+Return exec kitty      # Terminal
 bindsym $mod+c exec code
-bindsym $mod+x exec thunar
+bindsym $mod+x exec pcmanfm
 bindsym $mod+i exec firefox
-
-# EXEC ON START
-exec nitrogen --restore &
